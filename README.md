@@ -8,7 +8,7 @@ Spring Boot: 2.1.4
 
 ORM: Spring Data JPA
 
-Front: Tymeleaf, Jquery, HTML, CSS
+Front: Tymeleaf, Jquery, HTML, CSS -> Vue.JS (Change later)
 
 DB: MySQL -> Spring Data Redis, Lettuce, Embedded Redis (Working)
 
