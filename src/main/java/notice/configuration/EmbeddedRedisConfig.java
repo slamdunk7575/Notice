@@ -26,6 +26,7 @@ public class EmbeddedRedisConfig {
 
     @PostConstruct
     public void redisServer() throws IOException {
+        // 지정한 Redis Port로 실행중인 프로세스가 있다면, 다른 포트로 내장 Redis를 실행
         int port = isRedisRunning()? findAvailablePort() : redisPort;
         redisServer = new RedisServer(port);
         redisServer.start();
