@@ -45,9 +45,9 @@
         <input type="hidden" id="method" name="_method"/>
     </form>
 
-    <div class="file_list">
+    <!--<div class="file_list">
         <a th:each="list : ${notice.fileList}" th:href="@{/api/notice/file(noticeIdx=${notice.noticeIdx}, idx=${list.idx})}" th:text="|${list.originalFileName} (${#numbers.formatInteger(list.fileSize/1000, 1, 'DEFAULT')} kb)|"></a>
-    </div>
+    </div>-->
 
     <a href="#this" id="list" class="btn">목록으로</a>
     <a href="#this" id="edit" class="btn">수정하기</a>

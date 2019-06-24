@@ -25,7 +25,7 @@ public class Point implements Serializable {
     }
 
     public void refresh(long amount, LocalDateTime refreshTime) {
-        // 저장된 데이터 보다 최신 데이터인 경
+        // 저장된 데이터 보다 최신 데이터인 경우
         if(refreshTime.isAfter(this.refreshTime)) {
             this.amount = amount;
             this.refreshTime = refreshTime;

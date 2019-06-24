@@ -33,7 +33,7 @@ public class RedisTest2 {
         LocalDateTime refreshTime = LocalDateTime.of(2019, 6, 24, 01, 05);
         pointRedisRepository.save(Point.builder()
                 .id(id)
-                .amount(2000L)
+                .amount(1000L)
                 .refreshTime(refreshTime)
                 .build());
 

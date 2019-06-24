@@ -16,7 +16,7 @@ import java.io.File;
 import java.net.URLEncoder;
 import java.util.List;
 
-@Controller
+// @Controller
 public class NoticeController {
 
     private final NoticeService noticeService;
