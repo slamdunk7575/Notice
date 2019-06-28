@@ -15,17 +15,17 @@ Interceptor, Filter(한글처리)
 
 
 ## How To Build & Run
-1. 프로젝트를 Clone or Download 합니다.
-2. 터미널을 실행시켜 해당 폴더로 이동.
+프로젝트를 Clone or Download 합니다.
+<br>터미널을 실행시켜 해당 폴더로 이동.
 ~~~
-3. $ gradle bootjar
+$ gradle bootjar
 ~~~
 
 build/libs 경로에 가보면 모든 의존성 라이브러리가 포함된 jar 파일을 확인 할 수 있음.
 
 ~~~
-4. nohup java -jar notice-0.0.1-SNAPSHOT.jar
-5. tail -f nohup.out &
+nohup java -jar notice-0.0.1-SNAPSHOT.jar
+tail -f nohup.out &
 ~~~
 
 Browser에서 http://localhost:8080/api/noticePage/ 접속. 
