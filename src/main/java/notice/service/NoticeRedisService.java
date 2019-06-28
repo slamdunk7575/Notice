@@ -1,6 +1,8 @@
 package notice.service;
 
-import notice.entity.NoticeRedis;
+import notice.domain.NoticeRedis;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
@@ -16,4 +18,6 @@ public interface NoticeRedisService {
     void deleteNotice(int noticeIdx);
 
     // NoticeFileEntity selectNoticeFileInformation(int noticeIdx, int idx) throws Exception;
+
+    Page<NoticeRedis> selectNoticeListWithPage(Pageable pageable) throws Exception;
 }

@@ -1,4 +1,4 @@
-package notice.entity;
+package notice.domain;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -7,9 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
 
-import javax.persistence.Column;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,18 +21,15 @@ public class NoticeFileRedis implements Serializable {
     private String storedFilePath;
     private long fileSize;
     private String creatorId;
-    private LocalDateTime createdDatetime = LocalDateTime.now();
     private String updaterId;
-    private LocalDateTime updatedDatetime;
     private int noticeIdx;
 
     @Builder
-    public NoticeFileRedis(String originalFileName, String storedFilePath, long fileSize, String creatorId, LocalDateTime createdDatetime, int noticeIdx) {
+    public NoticeFileRedis(String originalFileName, String storedFilePath, long fileSize, String creatorId, int noticeIdx) {
         this.originalFileName = originalFileName;
         this.storedFilePath = storedFilePath;
         this.fileSize = fileSize;
         this.creatorId = creatorId;
-        this.createdDatetime = createdDatetime;
         this.noticeIdx = noticeIdx;
     }
 }

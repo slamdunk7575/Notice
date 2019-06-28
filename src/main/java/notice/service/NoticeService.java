@@ -1,21 +1,26 @@
 package notice.service;
 
-import notice.entity.NoticeEntity;
-import notice.entity.NoticeFileEntity;
+import notice.domain.NoticeEntity;
+import notice.domain.NoticeFileEntity;
+import notice.dto.NoticeDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
 
 public interface NoticeService {
 
-    List<NoticeEntity> selectNoticeList() throws Exception;
+    List<NoticeDto> selectNoticeList() throws Exception;
 
-    void saveNotice(NoticeEntity notice, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
+    Page<NoticeEntity> selectNoticeListWithPage(Pageable pageable) throws Exception;
 
-    NoticeEntity selectNoticeDetail(int noticeIdx) throws Exception;
+    void saveNotice(NoticeDto notice, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 
-    void deleteNotice(int noticeIdx);
+    NoticeDto selectNoticeDetail(Long noticeIdx) throws Exception;
 
-    NoticeFileEntity selectNoticeFileInformation(int noticeIdx, int idx) throws Exception;
+    void deleteNotice(Long noticeIdx);
+
+    NoticeFileEntity selectNoticeFileInformation(Long noticeIdx, Long idx) throws Exception;
 
 }

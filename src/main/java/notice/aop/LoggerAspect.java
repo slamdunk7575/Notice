@@ -12,8 +12,7 @@ import org.springframework.stereotype.Component;
 public class LoggerAspect {
 
     @Around("execution(* notice.controller.*Controller.*(..)) or " +
-            "execution(* notice.service.*Impl.*(..)) or " +
-            "execution(* notice.mapper.*Mapper.*(..))")
+            "execution(* notice.service.*Impl.*(..))")
     public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable {
 
         StringBuilder type = new StringBuilder();
@@ -27,10 +26,6 @@ public class LoggerAspect {
             // type = "ServiceImpl  \t:  ";
             type.append("ServiceImpl  \t:  ");
 
-        }
-        else if (name.indexOf("Mapper") > -1) {
-            // type = "Mapper  \t\t:  ";
-            type.append("Mapper  \t\t:  ");
         }
 
         log.debug(type + name + "." + joinPoint.getSignature().getName() + "()");

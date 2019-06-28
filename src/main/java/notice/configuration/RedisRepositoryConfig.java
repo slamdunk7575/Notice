@@ -28,6 +28,13 @@ public class RedisRepositoryConfig {
     public RedisTemplate<?, ?> redisTemplate() {
         RedisTemplate<byte[], byte[]> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory());
+
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringRedisSerializer);
+        redisTemplate.setValueSerializer(stringRedisSerializer);
+        redisTemplate.setHashKeySerializer(stringRedisSerializer);
+        redisTemplate.setHashValueSerializer(stringRedisSerializer);
+
         return redisTemplate;
     }
 }

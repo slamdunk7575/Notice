@@ -1,18 +1,13 @@
 package notice.configuration;
 
-import notice.entity.NoticeRedis;
 import notice.interceptor.LoggerInterceptor;
 import notice.repository.NoticeRedisRepository;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.time.LocalDateTime;
-import java.util.Arrays;
 
 
 @Configuration

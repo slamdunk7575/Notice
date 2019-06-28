@@ -1,12 +1,9 @@
-package notice.entity;
+package notice.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
-import org.springframework.lang.Nullable;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,9 +11,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @RedisHash("notice")
-public class NoticeRedis implements Serializable {
+public class NoticeRedis implements Serializable, Comparable<NoticeRedis> {
 
     @Id
+    @Indexed
     private Integer noticeIdx;
     private String contents;
     private Integer hitCnt;
@@ -27,7 +25,8 @@ public class NoticeRedis implements Serializable {
     private LocalDateTime updatedDatetime;
 
     @Builder
-    public NoticeRedis(String title, String contents, Integer hitCnt, String creatorId, LocalDateTime createdDatetime) {
+    public NoticeRedis(Integer noticeIdx, String title, String contents, Integer hitCnt, String creatorId, LocalDateTime createdDatetime) {
+        this.noticeIdx = noticeIdx;
         this.title = title;
         this.contents = contents;
         this.hitCnt = hitCnt;
@@ -37,5 +36,15 @@ public class NoticeRedis implements Serializable {
 
     public void refresh(Integer plusHitCnt) {
         this.hitCnt = plusHitCnt;
+    }
+
+    @Override
+    public int compareTo(NoticeRedis n) {
+        if (this.noticeIdx < n.getNoticeIdx()) {
+            return -1;
+        } else if (this.noticeIdx > n.noticeIdx) {
+            return 1;
+        }
+        return 0;
     }
 }

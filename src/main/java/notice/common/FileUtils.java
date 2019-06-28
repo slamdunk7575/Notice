@@ -1,6 +1,6 @@
 package notice.common;
 
-import notice.entity.NoticeFileEntity;
+import notice.domain.NoticeFileEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;

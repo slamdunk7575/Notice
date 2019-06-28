@@ -1,6 +1,6 @@
 package notice;
 
-import notice.entity.Point;
+import notice.domain.Point;
 import notice.repository.PointRedisRepository;
 import org.junit.After;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(properties = "job.name=b")
-public class RedisTest3 {
+public class RedisTest_3 {
 
     @Autowired
     private PointRedisRepository pointRedisRepository;

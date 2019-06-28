@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>notice</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container">
@@ -33,9 +34,54 @@
         <tr th:unless="${#lists.size(list)} > 0">
             <td colspan="4">조회된 결과가 없습니다.</td>
         </tr>
+
+        <!-- TEST Data 입력 -->
+       <!-- <tr th:each="i: ${#numbers.sequence(1, 10)}">
+            <td th:text="${i}"></td>
+            <td th:text="제목 + ${i}"></td>
+            <td th:text="0"></td>
+            <td th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></td>
+        </tr>-->
         </tbody>
     </table>
     <a href="/api/notice/write" class="btn">글 쓰기</a>
+
+
+    <nav class="notice_nav">
+        <ul class="pagination"
+            th:with="start=${T(Math).floor(list.number/10)*10 + 1},
+                    last=(${start + 9 < list.totalPages ? start + 9 : list.totalPages})">
+
+            <li>
+                <a th:href="@{/api/noticePage(page=1)}" aria-label="First">
+                    <span aria-hidden="true">First</span>
+                </a>
+            </li>
+
+            <li th:class="${list.first} ? 'disabled'">
+                <a th:href="${list.first} ? '#' :@{/api/noticePage(page=${list.number})}" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </a>
+            </li>
+
+            <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == list.number + 1} ? 'active'">
+                <a th:text="${page}" th:href="@{/api/noticePage(page=${page})}"></a>
+            </li>
+
+            <li th:class="${list.last} ? 'disabled'">
+                <a th:href="${list.last} ? '#' : @{/api/noticePage(page=${list.number + 2})}" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/api/noticePage(page=${list.totalPages})}" aria-label="Last">
+                    <span aria-hidden="true">Last</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 </div>
 </body>
 </html>

@@ -1,39 +1,72 @@
 package notice.controller;
 
-import notice.entity.NoticeRedis;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import notice.domain.NoticeRedis;
 import notice.service.NoticeRedisService;
-import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.net.URLEncoder;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@Controller
+@Slf4j
+@AllArgsConstructor
+// @Controller
 public class NoticeRedisController {
 
     private NoticeRedisService noticeRedisService;
-
-    @Autowired
-    public NoticeRedisController(NoticeRedisService noticeRedisService) {
-        this.noticeRedisService = noticeRedisService;
-    }
+    private RedisTemplate redisTemplate;
 
     @GetMapping(value = "/api/notice")
     public ModelAndView openNoticeList(ModelMap model) throws Exception {
 
         ModelAndView mv = new ModelAndView("/notice/noticeList");
         List<NoticeRedis> list = noticeRedisService.selectNoticeList();
+
         mv.addObject("list", list);
 
         return mv;
     }
+
+
+    // 페이징 처리
+    @GetMapping(value = "/api/noticePage")
+    public ModelAndView openNoticeListWithPage(@PageableDefault Pageable pageable, ModelMap model) throws Exception {
+
+        ModelAndView mv = new ModelAndView("/notice/noticeList");
+        Page<NoticeRedis> list = noticeRedisService.selectNoticeListWithPage(pageable);
+
+        list.get().sorted().collect(Collectors.toList());
+        /*Collections.sort(list, new Comparator<NoticeRedis>() {
+            @Override
+            public int compare(NoticeRedis n1, NoticeRedis n2) {
+                if (n1.getNoticeIdx() < n2.getNoticeIdx()) {
+                    return -1;
+                } else if (n1.getNoticeIdx() > n2.getNoticeIdx()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });*/
+
+
+        mv.addObject("list", list);
+
+        log.debug("총 element 수 : {}, 전체 page 수 : {}, 페이지에 표시할 element 수 : {}, 현재 페이지 index : {}, 현재 페이지의 element 수 : {}",
+                list.getTotalElements(), list.getTotalPages(), list.getSize(),
+                list.getNumber(), list.getNumberOfElements());
+
+        return mv;
+    }
+
 
     // @GetMapping(value = "/api/notice/write")
     @RequestMapping(value="/api/notice/write", method= RequestMethod.GET)
@@ -44,9 +77,8 @@ public class NoticeRedisController {
     // @PostMapping(value = "/api/notice/write")
     @RequestMapping(value="/api/notice/write", method=RequestMethod.POST)
     public String writeNotice(NoticeRedis notice, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
-        System.out.println(notice);
         noticeRedisService.saveNotice(notice, multipartHttpServletRequest);
-        return "redirect:/api/notice";
+        return "redirect:/api/noticePage";
     }
 
     @GetMapping(value = "/api/notice/{noticeIdx}")
@@ -86,4 +118,5 @@ public class NoticeRedisController {
         response.getOutputStream().flush();
         response.getOutputStream().close();
     }*/
+
 }

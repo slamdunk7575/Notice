@@ -1,4 +1,4 @@
-package notice.entity;
+package notice.domain;
 
 import lombok.Builder;
 import lombok.Getter;

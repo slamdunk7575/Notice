@@ -45,7 +45,6 @@ public class DatabaseConfiguration {
     }
 
 
-    // 선언적 트랜잭션 처리
     public PlatformTransactionManager transactionManager() throws Exception {
         return new DataSourceTransactionManager(dataSource());
     }
