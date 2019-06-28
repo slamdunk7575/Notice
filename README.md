@@ -28,7 +28,7 @@ build/libs 경로에 가보면 모든 의존성 라이브러리가 포함된 jar
 5. tail -f nohup.out &
 ~~~
 
-Browser에서 http://localhost:8080/api/noticePage/ 접속 
+Browser에서 http://localhost:8080/api/noticePage/ 접속. 
 
 ## Dev Env
 JAVA: 1.8
@@ -50,7 +50,8 @@ Versioning: GitHub
 OS: MacOS
 
 ## TODO
-Spring Data Redis, Lettuce, Embedded Redis를 사용해보려고 했으나 Pageable에서 정렬이 안되는 문제가 있었다. Pageable을 사용하지 않고 직접 구현해서 적용해보기.
+Spring Data Redis, Lettuce, Embedded Redis를 사용해보려고 했으나 Pageable에서 정렬이 안되는 문제가 있었다. 
+Pageable을 사용하지 않고 직접 구현해서 적용해보기.
 
 로그인(권한/인증) 처리하기.
 
