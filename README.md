@@ -9,9 +9,9 @@ File Upload & Download.
 Paging. (Use Spring Pageable Interface)
 
 **Etc.**   
-AOP(Logging, Transaction, Exception),
+AOP (Logging, Transaction, Exception)
 
-Interceptor, Filter(한글처리)
+Interceptor, Filter (한글처리)
 
 
 ## How To Build & Run
@@ -37,7 +37,7 @@ Spring Boot: 2.1.6
 
 ORM: Spring Data JPA
 
-Front: Tymeleaf, Jquery, HTML, CSS -> Vue.JS (Change later)
+Front: Tymeleaf, Jquery, HTML, CSS
 
 DB: MySQL -> H2
 
