@@ -39,7 +39,7 @@ ORM: Spring Data JPA
 
 Front: Tymeleaf, Jquery, HTML, CSS -> Vue.JS (Change later)
 
-DB: MySQL ->  -> H2
+DB: MySQL -> H2
 
 Build: Gradle
 
@@ -50,7 +50,8 @@ Versioning: GitHub
 OS: MacOS
 
 ## ToDo
-Spring Data Redis, Lettuce, Embedded Redis를 사용해보려고 했으나 Pageable에서 정렬이 안되는 문제가 있었다.<br>Pageable을 사용하지 않고 직접 구현해서 적용해보기.
+Spring Data Redis, Lettuce, Embedded Redis를 사용해보려고 했으나 Pageable에서 정렬이 안되는 문제가 있었다.
+<br>Pageable을 사용하지 않고 직접 구현해서 적용해보기.
 
 로그인(권한/인증) 처리하기.
 
