@@ -30,17 +30,17 @@ public class NoticeController {
     private NoticeService noticeService;
 
 
-    @GetMapping(value = "/api/notice")
+    /*@GetMapping(value = "/api/notice")
     public ModelAndView openNoticeList(ModelMap model) throws Exception {
 
         ModelAndView mv = new ModelAndView("notice/noticeList");
         List<NoticeDto> list = noticeService.selectNoticeList();
         mv.addObject("list", list);
         return mv;
-    }
+    }*/
 
 
-    @GetMapping(value = "/api/noticePage")
+    @GetMapping(value = "/api/notice")
     public ModelAndView openNoticeListWithPage(@PageableDefault Pageable pageable, ModelMap model) throws Exception {
 
         ModelAndView mv = new ModelAndView("notice/noticeList");
