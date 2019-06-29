@@ -28,7 +28,7 @@ nohup java -jar notice-0.0.1-SNAPSHOT.jar
 tail -f nohup.out &
 ~~~
 
-Browser에서 http://localhost:8080/api/noticePage/ 접속. 
+Browser에서 http://localhost:8080/api/notice/ 접속. 
 
 ## Dev Env
 JAVA: 1.8
