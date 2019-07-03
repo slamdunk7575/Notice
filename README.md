@@ -11,7 +11,7 @@ Paging. (Use Spring Pageable Interface)
 **Etc.**   
 AOP (Logging, Transaction, Exception)
 
-Interceptor, Filter (한글처리)
+Interceptor, Filter(한글처리)
 
 
 ## How To Build & Run
@@ -24,8 +24,8 @@ $ gradle bootjar
 build/libs 경로에 가보면 모든 의존성 라이브러리가 포함된 jar 파일을 확인 할 수 있음.
 
 ~~~
-nohup java -jar notice-0.0.1-SNAPSHOT.jar
-tail -f nohup.out &
+nohup java -jar notice-0.0.1-SNAPSHOT.jar &
+tail -f nohup.out
 ~~~
 
 Browser에서 http://localhost:8080/api/notice/ 접속. 
