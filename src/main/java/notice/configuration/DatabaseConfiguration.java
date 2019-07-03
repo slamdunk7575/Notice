@@ -39,6 +39,7 @@ public class DatabaseConfiguration {
         return dataSource;
     }
 
+    @Bean
     @ConfigurationProperties(prefix = "spring.jpa")
     public Properties hibernateConfig() {
         return new Properties();
