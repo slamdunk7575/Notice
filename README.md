@@ -50,8 +50,9 @@ Versioning: GitHub
 OS: MacOS
 
 ## To Do
-Spring Data Redis, Lettuce, Embedded Redis를 적용해보려고 했으나 Pageable(Spring에서 페이징 기능을 위한 파라미터들을 추상화 시킨 인터페이스)사용시 정렬이 안되는 문제가 있었다.
+Spring Data Redis, Lettuce, Embedded Redis를 적용해보려고 했으나 Pageable에서 정렬이 안되는 문제가 있었다.
 <br>Pageable을 사용하지 않고 직접 구현해서 적용해보기.
+<br>*Pageable이란? Spring에서 페이징 기능을 위한 파라미터들을 추상화 시킨 인터페이스.
 
 로그인(권한/인증) 처리하기.
 
