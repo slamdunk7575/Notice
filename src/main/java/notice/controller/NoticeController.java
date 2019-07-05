@@ -76,7 +76,7 @@ public class NoticeController {
     @RequestMapping(value="/api/notice/write", method=RequestMethod.POST)
     public String writeNotice(NoticeDto notice, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception{
         noticeService.saveNotice(notice, multipartHttpServletRequest);
-        return "redirect:/api/noticePage";
+        return "redirect:/api/notice";
     }
 
 
@@ -94,14 +94,14 @@ public class NoticeController {
     @PutMapping(value = "/api/notice/{noticeIdx}")
     public String updateNotice(NoticeDto notice) throws Exception {
         noticeService.saveNotice(notice, null);
-        return "redirect:/api/noticePage";
+        return "redirect:/api/notice";
     }
 
 
     @DeleteMapping(value = "/api/notice/{noticeIdx}")
     public String deleteNotice(@PathVariable("noticeIdx") Long noticeIdx) throws Exception {
         noticeService.deleteNotice(noticeIdx);
-        return "redirect:/api/noticePage";
+        return "redirect:/api/notice";
     }
 
 

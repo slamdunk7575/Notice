@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Component
+// @Component
 @AllArgsConstructor
 public class NoticeInitService implements CommandLineRunner {
 
@@ -24,7 +24,7 @@ public class NoticeInitService implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        for (int i = 0; i < 154; i++) {
+        /*for (int i = 0; i < 154; i++) {
             NoticeEntity noticeEntity = NoticeEntity.builder()
                     .title("Notice 샘플 DATA")
                     .contents("페이징 TEST")
@@ -33,7 +33,7 @@ public class NoticeInitService implements CommandLineRunner {
                     .createdDatetime(LocalDateTime.now())
                     .build();
             noticeRepository.save(noticeEntity);
-        }
+        }*/
 
 
         /*RedisAtomicInteger uniqueNum =
