@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -41,9 +42,9 @@ public class NoticeController {
 
 
     @GetMapping(value = "/api/notice")
-    public ModelAndView openNoticeListWithPage(@PageableDefault Pageable pageable, ModelMap model) throws Exception {
+    public String openNoticeListWithPage(@PageableDefault Pageable pageable, Model model) throws Exception {
 
-        ModelAndView mv = new ModelAndView("notice/noticeList");
+        // ModelAndView mv = new ModelAndView("notice/noticeList");
         Page<NoticeEntity> entityList = noticeService.selectNoticeListWithPage(pageable);
 
         Page<NoticeDto> list = entityList.map(new Function<NoticeEntity, NoticeDto>() {
@@ -53,13 +54,14 @@ public class NoticeController {
             }
         });
 
-        mv.addObject("list", list);
+        // mv.addObject("list", list);
+        model.addAttribute("list", list);
 
         log.debug("총 element 수 : {}, 전체 page 수 : {}, 페이지에 표시할 element 수 : {}, 현재 페이지 index : {}, 현재 페이지의 element 수 : {}",
                 list.getTotalElements(), list.getTotalPages(), list.getSize(),
                 list.getNumber(), list.getNumberOfElements());
 
-        return mv;
+        return "notice/noticeList";
     }
 
 

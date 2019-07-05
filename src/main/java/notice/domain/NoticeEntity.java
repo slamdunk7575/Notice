@@ -71,8 +71,6 @@ public class NoticeEntity extends BaseTimeEntity {
         this.hitCnt = plusHitCnt;
     }
 
-
-
 }
 
 

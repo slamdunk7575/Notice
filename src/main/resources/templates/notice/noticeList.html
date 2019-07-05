@@ -53,29 +53,29 @@
                     last=(${start + 9 < list.totalPages ? start + 9 : list.totalPages})">
 
             <li>
-                <a th:href="@{/api/noticePage(page=1)}" aria-label="First">
+                <a th:href="@{/api/notice(page=1)}" aria-label="First">
                     <span aria-hidden="true">First</span>
                 </a>
             </li>
 
             <li th:class="${list.first} ? 'disabled'">
-                <a th:href="${list.first} ? '#' :@{/api/noticePage(page=${list.number})}" aria-label="Previous">
+                <a th:href="${list.first} ? '#' :@{/api/notice(page=${list.number})}" aria-label="Previous">
                     <span aria-hidden="true">&lt;</span>
                 </a>
             </li>
 
             <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == list.number + 1} ? 'active'">
-                <a th:text="${page}" th:href="@{/api/noticePage(page=${page})}"></a>
+                <a th:text="${page}" th:href="@{/api/notice(page=${page})}"></a>
             </li>
 
             <li th:class="${list.last} ? 'disabled'">
-                <a th:href="${list.last} ? '#' : @{/api/noticePage(page=${list.number + 2})}" aria-label="Next">
+                <a th:href="${list.last} ? '#' : @{/api/notice(page=${list.number + 2})}" aria-label="Next">
                     <span aria-hidden="true">&gt;</span>
                 </a>
             </li>
 
             <li>
-                <a th:href="@{/api/noticePage(page=${list.totalPages})}" aria-label="Last">
+                <a th:href="@{/api/notice(page=${list.totalPages})}" aria-label="Last">
                     <span aria-hidden="true">Last</span>
                 </a>
             </li>
