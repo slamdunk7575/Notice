@@ -32,7 +32,6 @@ public class NoticeApplication {
     public CommandLineRunner initData(NoticeRepository noticeRepository) {
         return args ->
                 IntStream.rangeClosed(1, 154).forEach(i -> {
-
                     NoticeEntity noticeEntity = NoticeEntity.builder()
                             .title("Notice 샘플 DATA")
                             .contents("페이징 TEST")
