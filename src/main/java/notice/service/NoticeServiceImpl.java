@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -29,10 +31,18 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public List<NoticeDto> selectNoticeList() throws Exception {
         List<NoticeEntity> noticeEntityList = noticeRepository.findAllByOrderByNoticeIdxDesc();
-        List<NoticeDto> noticeDtoList = new ArrayList<>();
+        /*List<NoticeDto> noticeDtoList = new ArrayList<>();
         for (NoticeEntity noticeEntity: noticeEntityList) {
             noticeDtoList.add(noticeEntity.toDto());
-        }
+        }*/
+
+        List<NoticeDto> noticeDtoList = noticeEntityList.stream().map(new Function<NoticeEntity, NoticeDto>() {
+            @Override
+            public NoticeDto apply(NoticeEntity noticeEntity) {
+                return noticeEntity.toDto();
+            }
+        }).collect(Collectors.toList());
+
         return noticeDtoList;
     }
 
