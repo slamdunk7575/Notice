@@ -59,11 +59,13 @@ public class FileUtils {
                     }
 
                     newFileName = Long.toString(System.nanoTime()) + originalFileExtension;
-                    NoticeFileEntity noticeFile = new NoticeFileEntity();
-                    noticeFile.setFileSize(multipartFile.getSize());
-                    noticeFile.setOriginalFileName(multipartFile.getOriginalFilename());
-                    noticeFile.setStoredFilePath(path + "/" + newFileName);
-                    noticeFile.setCreatorId("admin");
+                    NoticeFileEntity noticeFile = NoticeFileEntity.builder()
+                            .fileSize(multipartFile.getSize())
+                            .originalFileName(multipartFile.getOriginalFilename())
+                            .storedFilePath(path + "/" + newFileName)
+                            .creatorId("Admin")
+                            .build();
+
                     fileList.add(noticeFile);
 
                     file = new File(path + "/" + newFileName);

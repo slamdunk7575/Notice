@@ -53,6 +53,7 @@ public class NoticeDto {
         this.fileList = setNoticeFileDto(fileList);
     }
 
+
     public Collection<NoticeFileDto> setNoticeFileDto(Collection<NoticeFileEntity> noticeFileEntityCollection) {
         Collection<NoticeFileDto> fileList = new ArrayList<>();
         for (NoticeFileEntity noticeFileEntity : noticeFileEntityCollection) {

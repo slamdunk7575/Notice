@@ -9,11 +9,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Optional;
 
+@Entity
 @Getter
-@Setter
 @Table(name = "t_notice")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
+@EqualsAndHashCode
 public class NoticeEntity extends BaseTimeEntity {
 
     @Id
@@ -23,6 +23,7 @@ public class NoticeEntity extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String title;
 
+    // 테이블의 컬럼정보와 엔티티를 맞춰줘야함
     @Column(columnDefinition = "TEXT", nullable = false)
     private String contents;
 
@@ -34,7 +35,7 @@ public class NoticeEntity extends BaseTimeEntity {
 
     private String updaterId;
 
-
+    @Setter
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="notice_idx")
     private Collection<NoticeFileEntity> fileList;
@@ -51,6 +52,7 @@ public class NoticeEntity extends BaseTimeEntity {
         this.updaterId = updaterId;
         this.fileList = fileList;
     }
+
 
     public NoticeDto toDto() {
         LocalDateTime createdDatetimeCheck = Optional.ofNullable(this.getCreatedDatetime())

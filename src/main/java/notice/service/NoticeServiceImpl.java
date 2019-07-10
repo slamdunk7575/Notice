@@ -78,7 +78,6 @@ public class NoticeServiceImpl implements NoticeService {
             noticeRepository.save(notice);
 
             NoticeDto noticeDto = notice.toDto();
-
             return noticeDto;
         } else {
             throw new NullPointerException();

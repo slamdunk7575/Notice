@@ -6,11 +6,11 @@ import notice.dto.NoticeFileDto;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 @Getter
-@Setter
 @Table(name="t_notice_file")
 @NoArgsConstructor
-@Entity
+@EqualsAndHashCode
 public class NoticeFileEntity extends BaseTimeEntity {
 
     @Id
