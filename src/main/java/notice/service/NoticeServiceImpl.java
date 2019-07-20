@@ -31,17 +31,21 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public List<NoticeDto> selectNoticeList() throws Exception {
         List<NoticeEntity> noticeEntityList = noticeRepository.findAllByOrderByNoticeIdxDesc();
+
         /*List<NoticeDto> noticeDtoList = new ArrayList<>();
         for (NoticeEntity noticeEntity: noticeEntityList) {
             noticeDtoList.add(noticeEntity.toDto());
         }*/
 
-        List<NoticeDto> noticeDtoList = noticeEntityList.stream().map(new Function<NoticeEntity, NoticeDto>() {
+
+        /*List<NoticeDto> noticeDtoList = noticeEntityList.stream().map(new Function<NoticeEntity, NoticeDto>() {
             @Override
             public NoticeDto apply(NoticeEntity noticeEntity) {
                 return noticeEntity.toDto();
             }
-        }).collect(Collectors.toList());
+        }).collect(Collectors.toList());*/
+
+        List<NoticeDto> noticeDtoList = noticeEntityList.stream().map(noticeEntity -> noticeEntity.toDto()).collect(Collectors.toList());
 
         return noticeDtoList;
     }
